@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tạo Link Shopee</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #e9a88f;
+}
+
+/* HEADER */
+.header {
+    text-align: center;
+    padding: 30px 10px 10px;
+    color: #ff4d2d;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* CARD */
+.container {
+    max-width: 500px;
+    margin: 20px auto;
+    background: #eee;
+    border-radius: 16px;
+    padding: 20px;
+}
+
+/* INPUT */
+.input-box {
+    display: flex;
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+    align-items: center;
+}
+
+.input-box input {
+    border: none;
+    flex: 1;
+    font-size: 14px;
+    outline: none;
+}
+
+/* BUTTON */
+.btn-main {
+    width: 100%;
+    margin-top: 15px;
+    padding: 14px;
+    background: #ff4d2d;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* RESULT CARD */
+.result {
+    background: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 15px;
+    border: 2px solid #ff4d2d;
+}
+
+.result h4 {
+    margin: 0 0 10px;
+    color: green;
+}
+
+.link-box {
+    font-size: 12px;
+    word-break: break-all;
+    margin-bottom: 10px;
+}
+
+.copy-btn {
+    background: #ff4d2d;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* ACTION BUTTON */
+.actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.actions button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.buy { background: #28c76f; }
+.share { background: #3b5998; }
+
+/* GUIDE */
+.guide {
+    background: #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-size: 14px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header">🔗 Tạo Link Shopee</div>
+
+<div class="container">
+
+    <!-- INPUT -->
+    <div class="input-box">
+        <input type="text" id="linkInput" placeholder="Dán link Shopee vào đây...">
+    </div>
+
+    <button class="btn-main" onclick="taoLink()">Tạo Link Ngay</button>
+
+    <!-- RESULT -->
+    <div class="result" id="resultBox" style="display:none;">
+        <h4>✔ Link đã tạo</h4>
+
+        <div class="link-box" id="output"></div>
+
+        <button class="copy-btn" onclick="copyLink()">Copy</button>
+    </div>
+
+    <!-- ACTION -->
+    <div class="actions">
+        <button class="buy">Mua Ngay</button>
+        <button class="share">Chia sẻ</button>
+    </div>
+
+    <!-- GUIDE -->
+    <div class="guide">
+        <b>Hướng dẫn:</b><br><br>
+        1. Dán link Shopee<br>
+        2. Bấm "Tạo Link"<br>
+        3. Copy và đăng Facebook<br>
+    </div>
+
+</div>
+
+<script>
+function taoLink() {
+    let link = document.getElementById("linkInput").value;
+
+    // Demo fake affiliate (sau bạn thay bằng API thật)
+    let aff = "https://s.shopee.vn/redirect?url=" + encodeURIComponent(link);
+
+    document.getElementById("output").innerText = aff;
+    document.getElementById("resultBox").style.display = "block";
+}
+
+function copyLink() {
+    let text = document.getElementById("output").innerText;
+    navigator.clipboard.writeText(text);
+    alert("Đã copy!");
+}
+</script>
+
+</body>
+</html>
